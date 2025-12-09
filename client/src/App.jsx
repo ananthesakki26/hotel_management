@@ -33,6 +33,7 @@ function App() {
             </>
           }
         />
+        
         <Route path="/book" element={<Book />} />
         <Route path="/booking/:roomId" element={<BookingForm />} />
         <Route path="/staff" element={<Staff />} />
@@ -43,6 +44,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<FAQ />} />
       </Routes>
+
       <Footer />
     </>
   );
