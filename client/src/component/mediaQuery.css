@@ -1,0 +1,7 @@
+/* HOME FILE DESIGN */
+
+@media (max-width: 576px) {
+    .hotel-img {
+        display: none;
+    }
+}
