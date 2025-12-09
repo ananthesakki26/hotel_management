@@ -1,11 +1,11 @@
 import axios from "axios";
-import  { useState } from "react";
+import { useState } from "react";
 import { Card, Form, Button, FloatingLabel } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { bookingFormValidation } from "../../utiles/validation";
 
 export default function BookingsForm() {
-  const { roomType } = useParams(); 
+  const { roomType } = useParams();
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -13,20 +13,18 @@ export default function BookingsForm() {
     phoneNumber: "",
     checkInDate: "",
     checkOutDate: "",
-    roomType: roomType || "", 
+    roomType: roomType || "",
     numberOfGuests: "",
     specialRequests: "",
   });
 
   const [errors, setErrors] = useState({});
 
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = bookingFormValidation(formData);
@@ -34,6 +32,17 @@ export default function BookingsForm() {
     if (Object.keys(newErrors).length === 0) {
       await axios.post("http://localhost:5000/api/booking/add", formData);
       alert("Booking Successful!");
+
+      setFormData({
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        checkInDate: "",
+        checkOutDate: "",
+        roomType: roomType || "",
+        numberOfGuests: "",
+        specialRequests: "",
+      });
     }
   };
 
