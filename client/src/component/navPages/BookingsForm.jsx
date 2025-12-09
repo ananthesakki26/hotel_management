@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import  { useState } from "react";
 import { Card, Form, Button, FloatingLabel } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { bookingFormValidation } from "../../utiles/validation";
@@ -26,11 +27,12 @@ export default function BookingsForm() {
   };
 
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = bookingFormValidation(formData);
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
+      await axios.post("http://localhost:5000/api/booking/add", formData);
       alert("Booking Successful!");
     }
   };

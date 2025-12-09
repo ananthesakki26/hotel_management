@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Form, Card, Button } from "react-bootstrap";
 import { contactValidation } from "../../utiles/validation";
@@ -18,11 +19,12 @@ function Contact() {
 
   }
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
     const errors = contactValidation(formContact);
       setContactError(errors);
       if(Object.keys(errors).length === 0){
+        await axios.post("http://localhost:5000/api/contact/add", formContact);
         alert("Form submitted successfully!");
       }
   };
