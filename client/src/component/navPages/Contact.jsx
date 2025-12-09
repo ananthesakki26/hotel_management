@@ -26,6 +26,12 @@ function Contact() {
       if(Object.keys(errors).length === 0){
         await axios.post("http://localhost:5000/api/contact/add", formContact);
         alert("Form submitted successfully!");
+
+        setFormContact({
+        email: "",
+        phone: "",
+        feedback: ""
+      });
       }
   };
  
