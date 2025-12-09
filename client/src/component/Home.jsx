@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import React from "react";
+import { Button } from "react-bootstrap";
 import "./whole.css";
 import BackgroundImage from "../assets/hotel-Background.jpg";
 import { useNavigate } from "react-router-dom";
