@@ -17,7 +17,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/hotelApp")
   .then(() =>
      console.log("MongoDB Connected "))
   .catch(err =>
-     console.log("DB Error ", err));
+     console.log("MongoDB Error ", err));
 
 // Routes
 app.use("/api/contact", contactRoutes);

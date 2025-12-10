@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./whole.css";
@@ -12,7 +12,7 @@ function Navigation() {
       style={{
         background: "linear-gradient(to right, #0f0c29, #302b63, #24243e)",
       }}
-      expand="lg "
+      expand="lg"
     >
       <Container>
         <Link to="/" className="navbar-brand" >
