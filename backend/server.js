@@ -14,8 +14,10 @@ app.use(bodyParser.json());
 
 // MongoDB Connection
 mongoose.connect("mongodb://127.0.0.1:27017/hotelApp")
-  .then(() => console.log("MongoDB Connected "))
-  .catch(err => console.log("DB Error ", err));
+  .then(() =>
+     console.log("MongoDB Connected "))
+  .catch(err =>
+     console.log("DB Error ", err));
 
 // Routes
 app.use("/api/contact", contactRoutes);
