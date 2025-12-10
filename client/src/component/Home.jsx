@@ -25,7 +25,7 @@ export default function Home() {
             fontFamily: "Acme, sans-serif",
             fontWeight: 600,
             fontStyle: "normal",
-            fontSize: "30px",
+            fontSize: "30px", 
           }}
         >
           Welcome to Your Home Away From Home.
