@@ -1,6 +1,6 @@
 /* HOME FILE DESIGN */
 
-@media (max-width: 576px) {
+@media (max-width: 991px) {
     .hotel-img {
         display: none;
     }
