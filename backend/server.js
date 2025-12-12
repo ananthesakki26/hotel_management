@@ -1,30 +1,26 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 
-const contactRoutes = require("./routes/contactRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 
 const app = express();
 
-// Middlewares
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// MongoDB Connection
-mongoose.connect("mongodb://127.0.0.1:27017/hotelApp")
-  .then(() =>
-     console.log("MongoDB Connected "))
-  .catch(err =>
-     console.log("MongoDB Error ", err));
-
 // Routes
-app.use("/api/contact", contactRoutes);
-app.use("/api/booking", bookingRoutes);
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/contacts", contactRoutes);
 
-// Server
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT} `);
-});
+// MongoDB Connection
+mongoose
+  .connect("mongodb://127.0.0.1:27017/hotelDB")
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
+
+// Server Start
+app.listen(5000, () => console.log("Server running on port 5000"));

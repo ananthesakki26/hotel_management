@@ -9,6 +9,6 @@ const bookingSchema = new mongoose.Schema({
   roomType: String,
   numberOfGuests: Number,
   specialRequests: String,
- });
+});
 
 module.exports = mongoose.model("Booking", bookingSchema);
