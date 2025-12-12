@@ -30,8 +30,8 @@ export default function BookingsForm() {
     const newErrors = bookingFormValidation(formData);
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      await axios.post("http://localhost:5000/api/booking/add", formData);
-      alert("Booking Successful!");
+      await axios.post("http://localhost:5000/api/bookings", formData);
+      alert("Booking Saved!");
 
       setFormData({
         fullName: "",

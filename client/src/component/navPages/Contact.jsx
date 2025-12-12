@@ -4,38 +4,35 @@ import { Form, Card, Button } from "react-bootstrap";
 import { contactValidation } from "../../utiles/validation";
 
 function Contact() {
-
   const [formContact, setFormContact] = useState({
-     email:"",
-     phone:"",
-     feedback:""
-  })
+    email: "",
+    phone: "",
+    feedback: "",
+  });
 
-  const [contactError,setContactError] = useState({});
+  const [contactError, setContactError] = useState({});
 
-  const handleChange = (e) =>{
-     const {name,value} = e.target;
-     setFormContact({...formContact ,[name]: value});
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormContact({ ...formContact, [name]: value });
+  };
 
-  }
-
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = contactValidation(formContact);
-      setContactError(errors);
-      if(Object.keys(errors).length === 0){
-        await axios.post("http://localhost:5000/api/contact/add", formContact);
-        alert("Form submitted successfully!");
+    setContactError(errors);
+    if (Object.keys(errors).length === 0) {
+      await axios.post("http://localhost:5000/api/contacts", formContact);
+      alert("Contact Saved!");
 
-        setFormContact({
+      setFormContact({
         email: "",
         phone: "",
-        feedback: ""
+        feedback: "",
       });
-      }
+    }
   };
- 
-  
+
   return (
     <div className="d-flex justify-content-center align-items-center mt-5  ">
       <Card className="p-4 shadow" style={{ width: "600px" }}>
@@ -56,7 +53,9 @@ function Contact() {
               value={formContact.email}
               onChange={handleChange}
             />
-            {contactError.email && <small className="text-danger">{contactError.email}</small>}
+            {contactError.email && (
+              <small className="text-danger">{contactError.email}</small>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="Phone number">
@@ -68,7 +67,9 @@ function Contact() {
               value={formContact.phone}
               onChange={handleChange}
             />
-            {contactError.phone && <small className="text-danger">{contactError.phone}</small>}
+            {contactError.phone && (
+              <small className="text-danger">{contactError.phone}</small>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="Feedback / Complaints">
@@ -80,14 +81,15 @@ function Contact() {
               value={formContact.feedback}
               onChange={handleChange}
             />
-            {contactError.feedback && <small className="text-danger">{contactError.feedback}</small>}
+            {contactError.feedback && (
+              <small className="text-danger">{contactError.feedback}</small>
+            )}
           </Form.Group>
 
           <div className="d-flex justify-content-center">
             <Button variant="outline-success" type="submit" className="px-5">
               Submit
             </Button>
-
           </div>
         </Form>
       </Card>
